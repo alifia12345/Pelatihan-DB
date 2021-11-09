@@ -1,26 +1,16 @@
-//Download dan masukan Library NewPing
-#include <NewPing.h>
-
 //Inisialisasi pembuatan variable
-int triger  =2;
-int echo    =3;
-int batas   =200; //Maksimal 400 cm
-
-NewPing cm(triger,echo,batas);
+int relay1=7;
 
 void setup() {
   //Menentukan Fungsionalitas dari PIN pada Microcontroller
   Serial.begin(115200); //baudrate yang digunakan untuk komunikasi microcontroller dengan komputer
+  pinMode(relay1,OUTPUT);
 }
 
 void loop() {
   //Program yang akan dijalankan berulang-ulang
-  int bacaJarak=cm.ping_cm();
-
-   //Print ke Serial Monitor
-  Serial.print("Data jarak:");
-  Serial.print(bacaJarak);
-  Serial.print(" cm");
-  Serial.println();
+  digitalWrite (relay1,HIGH);
+  delay(500); //Jeda waktu perulagan seama 500 mili detik
+  digitalWrite (relay1,LOW);
   delay(500); //Jeda waktu perulagan seama 500 mili detik
 }
